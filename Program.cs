@@ -35,8 +35,23 @@
              }
             } while (flagInput);
             //CODICE FISCALE
-            Console.WriteLine("Inserisci il tuo codice fiscale: ");
-            contribuente1.CodiceFiscale = Console.ReadLine().ToUpper();
+            do
+            {
+                Console.WriteLine("Inserisci il tuo codice fiscale: ");
+                string inputCodiceFiscale = Console.ReadLine().ToUpper();
+                if (inputCodiceFiscale.Length == 16)
+                {
+                    flagInput = false;
+                    contribuente1.CodiceFiscale = inputCodiceFiscale;
+                }
+                else
+                {
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Codice fiscale non valido");
+                    Console.ResetColor();
+                    flagInput = true;
+                }
+            } while (flagInput);
             //SESSO
             do
             {
