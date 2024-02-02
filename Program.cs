@@ -5,6 +5,8 @@
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8; //per riconoscere il simbolo euro
+            bool flagInput = false;
+            Console.WriteLine("███████████████████████████████████████████████████████████████████\r\n█▌ ██████╗ █████╗ ██╗      ██████╗ ██████╗ ██╗      ██████╗      ▐█\r\n█▌██╔════╝██╔══██╗██║     ██╔════╝██╔═══██╗██║     ██╔═══██╗     ▐█\r\n█▌██║     ███████║██║     ██║     ██║   ██║██║     ██║   ██║     ▐█\r\n█▌██║     ██╔══██║██║     ██║     ██║   ██║██║     ██║   ██║     ▐█\r\n█▌╚██████╗██║  ██║███████╗╚██████╗╚██████╔╝███████╗╚██████╔╝     ▐█\r\n█▌ ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝      ▐█\r\n█▌                                                               ▐█\r\n█▌ █████╗ ██╗     ██╗ ██████╗ ██╗   ██╗ ██████╗ ████████╗ █████╗ ▐█\r\n█▌██╔══██╗██║     ██║██╔═══██╗██║   ██║██╔═══██╗╚══██╔══╝██╔══██╗▐█\r\n█▌███████║██║     ██║██║   ██║██║   ██║██║   ██║   ██║   ███████║▐█\r\n█▌██╔══██║██║     ██║██║▄▄ ██║██║   ██║██║   ██║   ██║   ██╔══██║▐█\r\n█▌██║  ██║███████╗██║╚██████╔╝╚██████╔╝╚██████╔╝   ██║   ██║  ██║▐█\r\n█▌╚═╝  ╚═╝╚══════╝╚═╝ ╚══▀▀═╝  ╚═════╝  ╚═════╝    ╚═╝   ╚═╝  ╚═╝▐█\r\n███████████████████████████████████████████████████████████████████");
             Contribuente contribuente1 = new Contribuente();
             //NOME
             Console.WriteLine("Inserisci il tuo nome: ");
@@ -15,46 +17,67 @@
             string inputCognome = Console.ReadLine();
             contribuente1.Cognome = char.ToUpper(inputCognome[0]) + inputCognome.Substring(1);
             //DATA DI NASCITA
-            Console.WriteLine("Inserisci la tua data di nascita: (yyyy-MM-dd) ");
-            string inputData = Console.ReadLine();
-            if (DateOnly.TryParse(inputData, out DateOnly dataConvertita)) //converte input stringa in DateOnly
+            do
             {
-                contribuente1.DataNascita = dataConvertita;
-            }
-            else
-            {
-                Console.WriteLine("Formato data non valido");
-                return;
-            }
+             Console.WriteLine("Inserisci la tua data di nascita: (yyyy-MM-dd) ");
+             string inputData = Console.ReadLine();
+             if (DateOnly.TryParse(inputData, out DateOnly dataConvertita)) //converte input stringa in DateOnly
+             {
+                 contribuente1.DataNascita = dataConvertita;
+                 flagInput = false;
+             }
+             else
+             {
+                 Console.BackgroundColor = ConsoleColor.Red;
+                 Console.WriteLine("Formato data non valido");
+                 Console.ResetColor();
+                 flagInput = true;
+             }
+            } while (flagInput);
             //CODICE FISCALE
             Console.WriteLine("Inserisci il tuo codice fiscale: ");
             contribuente1.CodiceFiscale = Console.ReadLine().ToUpper();
             //SESSO
-            Console.WriteLine("Sesso: (M/F) ");
-            char inputSesso = char.Parse(Console.ReadLine());
-            if(inputSesso != 'm' && inputSesso != 'f')
+            do
             {
+             Console.WriteLine("Sesso: (M/F) ");
+             char inputSesso = char.Parse(Console.ReadLine());
+             if(inputSesso != 'm' && inputSesso != 'f')
+             {
+                Console.BackgroundColor = ConsoleColor.Red;
                 Console.WriteLine("Input non valido, selezionare M o F");
-                return;
-            }
-            inputSesso = inputSesso.ToString().ToUpper()[0];
-            contribuente1.Sesso = inputSesso;
+                Console.ResetColor();
+                flagInput = true;
+             }
+             else
+                {
+                  inputSesso = inputSesso.ToString().ToUpper()[0];
+                  flagInput = false;
+                  contribuente1.Sesso = inputSesso;
+                }
+            } while (flagInput);
             //COMUNE DI RESIDENZA
             Console.WriteLine("Inserisci il tuo comune di residenza: ");
             string inputComune = Console.ReadLine();
             contribuente1.ComuneResidenza = char.ToUpper(inputComune[0]) + inputComune.Substring(1);
             //REDDITO ANNUALE DICHIARATO
-            Console.WriteLine("Inserisci il tuo reddito annuale: ");
-            string inputReddito = Console.ReadLine();
-            if (double.TryParse(inputReddito, out double redditoDichiarato) && redditoDichiarato > 0) //Viene convertito in double per i decimali ma deve essere un numero positivo
+            do
             {
-                contribuente1.RedditoAnnuale = redditoDichiarato;
-            }
-            else
-            {
-                Console.WriteLine("Formato del reddito non valido");
-                return;
-            }
+             Console.WriteLine("Inserisci il tuo reddito annuale: ");
+             string inputReddito = Console.ReadLine();
+             if (double.TryParse(inputReddito, out double redditoDichiarato) && redditoDichiarato > 0) //Viene convertito in double per i decimali ma deve essere un numero positivo
+             {
+                 contribuente1.RedditoAnnuale = redditoDichiarato;
+                 flagInput = false;
+             }
+             else
+             {
+                 Console.BackgroundColor = ConsoleColor.Red;
+                 Console.WriteLine("Formato del reddito non valido");
+                 Console.ResetColor();
+                 flagInput = true;
+             }
+            } while (flagInput);
             //RIEPILOGO
             Console.WriteLine("===============================================");
             Console.WriteLine("CALCOLO DELL'IMPOSTA DA VERSARE:");
@@ -65,6 +88,8 @@
             Console.WriteLine($"Reddito dichiarato: \u20AC{contribuente1.RedditoAnnuale}");
             //CALCOLO IMPOSTA
             Console.WriteLine($"IMPOSTA DA VERSARE: \u20AC{contribuente1.CalcoloImposta(contribuente1.RedditoAnnuale)}");
+            Console.WriteLine("===============================================");
+            Console.WriteLine("██████████████████████████████████████████████████████████████████████████\r\n█▌ ▄▄▄      ▓█████▄ ▓█████▄  ██▓ ▒█████                                 ▐█\r\n█▌▒████▄    ▒██▀ ██▌▒██▀ ██▌▓██▒▒██▒  ██▒                               ▐█\r\n█▌▒██  ▀█▄  ░██   █▌░██   █▌▒██▒▒██░  ██▒                               ▐█\r\n█▌░██▄▄▄▄██ ░▓█▄   ▌░▓█▄   ▌░██░▒██   ██░                               ▐█\r\n█▌ ▓█   ▓██▒░▒████▓ ░▒████▓ ░██░░ ████▓▒░                               ▐█\r\n█▌ ▒▒   ▓▒█░ ▒▒▓  ▒  ▒▒▓  ▒ ░▓  ░ ▒░▒░▒░                                ▐█\r\n█▌  ▒   ▒▒ ░ ░ ▒  ▒  ░ ▒  ▒  ▒ ░  ░ ▒ ▒░                                ▐█\r\n█▌  ░   ▒    ░ ░  ░  ░ ░  ░  ▒ ░░ ░ ░ ▒                                 ▐█\r\n█▌      ░  ░   ░       ░     ░      ░ ░                                 ▐█\r\n█▌           ░       ░                                                  ▐█\r\n█▌  ██████ ▄▄▄█████▓ ██▓ ██▓███  ▓█████  ███▄    █ ▓█████▄  ██▓ ▒█████  ▐█\r\n█▌▒██    ▒ ▓  ██▒ ▓▒▓██▒▓██░  ██▒▓█   ▀  ██ ▀█   █ ▒██▀ ██▌▓██▒▒██▒  ██▒▐█\r\n█▌░ ▓██▄   ▒ ▓██░ ▒░▒██▒▓██░ ██▓▒▒███   ▓██  ▀█ ██▒░██   █▌▒██▒▒██░  ██▒▐█\r\n█▌  ▒   ██▒░ ▓██▓ ░ ░██░▒██▄█▓▒ ▒▒▓█  ▄ ▓██▒  ▐▌██▒░▓█▄   ▌░██░▒██   ██░▐█\r\n█▌▒██████▒▒  ▒██▒ ░ ░██░▒██▒ ░  ░░▒████▒▒██░   ▓██░░▒████▓ ░██░░ ████▓▒░▐█\r\n█▌▒ ▒▓▒ ▒ ░  ▒ ░░   ░▓  ▒▓▒░ ░  ░░░ ▒░ ░░ ▒░   ▒ ▒  ▒▒▓  ▒ ░▓  ░ ▒░▒░▒░ ▐█\r\n█▌░ ░▒  ░ ░    ░     ▒ ░░▒ ░      ░ ░  ░░ ░░   ░ ▒░ ░ ▒  ▒  ▒ ░  ░ ▒ ▒░ ▐█\r\n█▌░  ░  ░    ░       ▒ ░░░          ░      ░   ░ ░  ░ ░  ░  ▒ ░░ ░ ░ ▒  ▐█\r\n█▌      ░            ░              ░  ░         ░    ░     ░      ░ ░  ▐█\r\n█▌                                                  ░                   ▐█\r\n██████████████████████████████████████████████████████████████████████████");
         }
 
         public class Contribuente
@@ -143,29 +168,18 @@
                     return imposta;
 
                 }
-                else //DEVO ARRIVARE QUA CHE IL NUMERO è GIà POSITIVO SENNò VA CAMBIATA LA FUNZIONE CON VOID
+                else
                 {
                     double parteEccedente = redditoDichiarato - 75000;
                     imposta = 25420 + (parteEccedente * 0.43);
                     return imposta;
                 }
-                //else return Exception;
             }
 
             //Constructors
             public Contribuente()
             {
 
-            }
-            public Contribuente(string nome, string cognome, DateOnly dataNascita, string codiceFiscale, char sesso, string comuneResidenza, double redditoAnnuale)
-            {
-                _nome = nome;
-                _cognome = cognome;
-                _dataNascita = dataNascita;
-                _codiceFiscale = codiceFiscale;
-                _sesso = sesso;
-                _comuneResidenza = comuneResidenza;
-                _redditoAnnuale = redditoAnnuale;
             }
         }
     }
