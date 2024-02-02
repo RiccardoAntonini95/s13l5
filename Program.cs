@@ -8,14 +8,14 @@
             bool flagInput = false;
             Console.WriteLine("███████████████████████████████████████████████████████████████████\r\n█▌ ██████╗ █████╗ ██╗      ██████╗ ██████╗ ██╗      ██████╗      ▐█\r\n█▌██╔════╝██╔══██╗██║     ██╔════╝██╔═══██╗██║     ██╔═══██╗     ▐█\r\n█▌██║     ███████║██║     ██║     ██║   ██║██║     ██║   ██║     ▐█\r\n█▌██║     ██╔══██║██║     ██║     ██║   ██║██║     ██║   ██║     ▐█\r\n█▌╚██████╗██║  ██║███████╗╚██████╗╚██████╔╝███████╗╚██████╔╝     ▐█\r\n█▌ ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝      ▐█\r\n█▌                                                               ▐█\r\n█▌ █████╗ ██╗     ██╗ ██████╗ ██╗   ██╗ ██████╗ ████████╗ █████╗ ▐█\r\n█▌██╔══██╗██║     ██║██╔═══██╗██║   ██║██╔═══██╗╚══██╔══╝██╔══██╗▐█\r\n█▌███████║██║     ██║██║   ██║██║   ██║██║   ██║   ██║   ███████║▐█\r\n█▌██╔══██║██║     ██║██║▄▄ ██║██║   ██║██║   ██║   ██║   ██╔══██║▐█\r\n█▌██║  ██║███████╗██║╚██████╔╝╚██████╔╝╚██████╔╝   ██║   ██║  ██║▐█\r\n█▌╚═╝  ╚═╝╚══════╝╚═╝ ╚══▀▀═╝  ╚═════╝  ╚═════╝    ╚═╝   ╚═╝  ╚═╝▐█\r\n███████████████████████████████████████████████████████████████████");
             Contribuente contribuente1 = new Contribuente();
-            //NOME
-            Console.WriteLine("Inserisci il tuo nome: ");
-            string inputNome = Console.ReadLine();
-            contribuente1.Nome = char.ToUpper (inputNome[0]) + inputNome.Substring(1);
             //COGNOME
             Console.WriteLine("Inserisci il tuo cognome: ");
             string inputCognome = Console.ReadLine();
             contribuente1.Cognome = char.ToUpper(inputCognome[0]) + inputCognome.Substring(1);
+            //NOME
+            Console.WriteLine("Inserisci il tuo nome: ");
+            string inputNome = Console.ReadLine();
+            contribuente1.Nome = char.ToUpper (inputNome[0]) + inputNome.Substring(1);
             //DATA DI NASCITA
             do
             {
@@ -79,17 +79,18 @@
              }
             } while (flagInput);
             //RIEPILOGO
+            Console.Clear();
+            Console.WriteLine("██████████████████████████████████████████████████████████████████████████\r\n█▌ ▄▄▄      ▓█████▄ ▓█████▄  ██▓ ▒█████                                 ▐█\r\n█▌▒████▄    ▒██▀ ██▌▒██▀ ██▌▓██▒▒██▒  ██▒                               ▐█\r\n█▌▒██  ▀█▄  ░██   █▌░██   █▌▒██▒▒██░  ██▒                               ▐█\r\n█▌░██▄▄▄▄██ ░▓█▄   ▌░▓█▄   ▌░██░▒██   ██░                               ▐█\r\n█▌ ▓█   ▓██▒░▒████▓ ░▒████▓ ░██░░ ████▓▒░                               ▐█\r\n█▌ ▒▒   ▓▒█░ ▒▒▓  ▒  ▒▒▓  ▒ ░▓  ░ ▒░▒░▒░                                ▐█\r\n█▌  ▒   ▒▒ ░ ░ ▒  ▒  ░ ▒  ▒  ▒ ░  ░ ▒ ▒░                                ▐█\r\n█▌  ░   ▒    ░ ░  ░  ░ ░  ░  ▒ ░░ ░ ░ ▒                                 ▐█\r\n█▌      ░  ░   ░       ░     ░      ░ ░                                 ▐█\r\n█▌           ░       ░                                                  ▐█\r\n█▌  ██████ ▄▄▄█████▓ ██▓ ██▓███  ▓█████  ███▄    █ ▓█████▄  ██▓ ▒█████  ▐█\r\n█▌▒██    ▒ ▓  ██▒ ▓▒▓██▒▓██░  ██▒▓█   ▀  ██ ▀█   █ ▒██▀ ██▌▓██▒▒██▒  ██▒▐█\r\n█▌░ ▓██▄   ▒ ▓██░ ▒░▒██▒▓██░ ██▓▒▒███   ▓██  ▀█ ██▒░██   █▌▒██▒▒██░  ██▒▐█\r\n█▌  ▒   ██▒░ ▓██▓ ░ ░██░▒██▄█▓▒ ▒▒▓█  ▄ ▓██▒  ▐▌██▒░▓█▄   ▌░██░▒██   ██░▐█\r\n█▌▒██████▒▒  ▒██▒ ░ ░██░▒██▒ ░  ░░▒████▒▒██░   ▓██░░▒████▓ ░██░░ ████▓▒░▐█\r\n█▌▒ ▒▓▒ ▒ ░  ▒ ░░   ░▓  ▒▓▒░ ░  ░░░ ▒░ ░░ ▒░   ▒ ▒  ▒▒▓  ▒ ░▓  ░ ▒░▒░▒░ ▐█\r\n█▌░ ░▒  ░ ░    ░     ▒ ░░▒ ░      ░ ░  ░░ ░░   ░ ▒░ ░ ▒  ▒  ▒ ░  ░ ▒ ▒░ ▐█\r\n█▌░  ░  ░    ░       ▒ ░░░          ░      ░   ░ ░  ░ ░  ░  ▒ ░░ ░ ░ ▒  ▐█\r\n█▌      ░            ░              ░  ░         ░    ░     ░      ░ ░  ▐█\r\n█▌                                                  ░                   ▐█\r\n██████████████████████████████████████████████████████████████████████████");
             Console.WriteLine("===============================================");
             Console.WriteLine("CALCOLO DELL'IMPOSTA DA VERSARE:");
             Console.WriteLine($"Contribuente: {contribuente1.Nome} {contribuente1.Cognome}");
-            Console.WriteLine($"nato il {contribuente1.DataNascita} ({contribuente1.Sesso}),");
-            Console.WriteLine($"residente in {contribuente1.ComuneResidenza}");
-            Console.WriteLine($"codice fiscale: {contribuente1.CodiceFiscale}");
+            Console.WriteLine($"Nato/a il {contribuente1.DataNascita} ({contribuente1.Sesso}),");
+            Console.WriteLine($"Residente in: {contribuente1.ComuneResidenza}");
+            Console.WriteLine($"Codice Fiscale: {contribuente1.CodiceFiscale}");
             Console.WriteLine($"Reddito dichiarato: \u20AC{contribuente1.RedditoAnnuale}");
             //CALCOLO IMPOSTA
             Console.WriteLine($"IMPOSTA DA VERSARE: \u20AC{contribuente1.CalcoloImposta(contribuente1.RedditoAnnuale)}");
             Console.WriteLine("===============================================");
-            Console.WriteLine("██████████████████████████████████████████████████████████████████████████\r\n█▌ ▄▄▄      ▓█████▄ ▓█████▄  ██▓ ▒█████                                 ▐█\r\n█▌▒████▄    ▒██▀ ██▌▒██▀ ██▌▓██▒▒██▒  ██▒                               ▐█\r\n█▌▒██  ▀█▄  ░██   █▌░██   █▌▒██▒▒██░  ██▒                               ▐█\r\n█▌░██▄▄▄▄██ ░▓█▄   ▌░▓█▄   ▌░██░▒██   ██░                               ▐█\r\n█▌ ▓█   ▓██▒░▒████▓ ░▒████▓ ░██░░ ████▓▒░                               ▐█\r\n█▌ ▒▒   ▓▒█░ ▒▒▓  ▒  ▒▒▓  ▒ ░▓  ░ ▒░▒░▒░                                ▐█\r\n█▌  ▒   ▒▒ ░ ░ ▒  ▒  ░ ▒  ▒  ▒ ░  ░ ▒ ▒░                                ▐█\r\n█▌  ░   ▒    ░ ░  ░  ░ ░  ░  ▒ ░░ ░ ░ ▒                                 ▐█\r\n█▌      ░  ░   ░       ░     ░      ░ ░                                 ▐█\r\n█▌           ░       ░                                                  ▐█\r\n█▌  ██████ ▄▄▄█████▓ ██▓ ██▓███  ▓█████  ███▄    █ ▓█████▄  ██▓ ▒█████  ▐█\r\n█▌▒██    ▒ ▓  ██▒ ▓▒▓██▒▓██░  ██▒▓█   ▀  ██ ▀█   █ ▒██▀ ██▌▓██▒▒██▒  ██▒▐█\r\n█▌░ ▓██▄   ▒ ▓██░ ▒░▒██▒▓██░ ██▓▒▒███   ▓██  ▀█ ██▒░██   █▌▒██▒▒██░  ██▒▐█\r\n█▌  ▒   ██▒░ ▓██▓ ░ ░██░▒██▄█▓▒ ▒▒▓█  ▄ ▓██▒  ▐▌██▒░▓█▄   ▌░██░▒██   ██░▐█\r\n█▌▒██████▒▒  ▒██▒ ░ ░██░▒██▒ ░  ░░▒████▒▒██░   ▓██░░▒████▓ ░██░░ ████▓▒░▐█\r\n█▌▒ ▒▓▒ ▒ ░  ▒ ░░   ░▓  ▒▓▒░ ░  ░░░ ▒░ ░░ ▒░   ▒ ▒  ▒▒▓  ▒ ░▓  ░ ▒░▒░▒░ ▐█\r\n█▌░ ░▒  ░ ░    ░     ▒ ░░▒ ░      ░ ░  ░░ ░░   ░ ▒░ ░ ▒  ▒  ▒ ░  ░ ▒ ▒░ ▐█\r\n█▌░  ░  ░    ░       ▒ ░░░          ░      ░   ░ ░  ░ ░  ░  ▒ ░░ ░ ░ ▒  ▐█\r\n█▌      ░            ░              ░  ░         ░    ░     ░      ░ ░  ▐█\r\n█▌                                                  ░                   ▐█\r\n██████████████████████████████████████████████████████████████████████████");
         }
 
         public class Contribuente
@@ -175,7 +176,6 @@
                     return imposta;
                 }
             }
-
             //Constructors
             public Contribuente()
             {
